@@ -29,4 +29,3 @@ def problem1():
 
     print(list3)
 
-problem1()

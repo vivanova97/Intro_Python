@@ -1,7 +1,7 @@
 #Задача 26:  Напишите программу, которая на вход принимает два числа A и B, 
 #и возводит число А в целую степень B с помощью рекурсии.
 
-def power(A,B):
+def power(A = 3,B = 3):
     if B != 0:
         return A * power(A,B-1)
     else:
@@ -16,4 +16,8 @@ def summ(a,b):
         return a
     else:
         return 1 + summ(a,b-1)
+    
 
+
+
+        

@@ -34,11 +34,11 @@ def check_if_poem():
 def multiply(row_num, column_num):
     return row_num * column_num
 
-def print_operation_table(num_columns, num_rows):
+def print_operation_table(multiply,num_columns, num_rows):
         table = [[multiply(i+1,j+1) for i in range(num_columns)] for j in range(num_rows)]
         for row in table:
              print(*row)
         
-# print_operation_table(6,6)
+# print_operation_table(multiply,6,6)
 
     

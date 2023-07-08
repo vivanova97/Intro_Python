@@ -35,7 +35,6 @@ def multiply(row_num, column_num):
     return row_num * column_num
 
 def print_operation_table(num_columns, num_rows):
-        # import tabulate
         table = [[multiply(i+1,j+1) for i in range(num_columns)] for j in range(num_rows)]
         for row in table:
              print(*row)

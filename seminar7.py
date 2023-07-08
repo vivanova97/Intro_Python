@@ -12,7 +12,7 @@
 def check_for_vowels(phrase, count = 0):
     vowels = ['а', 'я', 'у', 'ю', 'о', 'е', 'ё', 'э', 'и', 'ы']
     for letter in phrase:
-        if letter in vowels:
+        if letter.lower() in vowels:
             count+=1
     return count
 
@@ -34,7 +34,7 @@ def check_if_poem():
 def multiply(row_num, column_num):
     return row_num * column_num
 
-def print_operation_table(multiply,num_columns, num_rows):
+def print_operation_table(multiply, num_columns, num_rows):
         table = [[multiply(i+1,j+1) for i in range(num_columns)] for j in range(num_rows)]
         for row in table:
              print(*row)

@@ -35,7 +35,7 @@ def replace_data_phonebook(old_value, new_value):
 
 def delete_person():
     phone = input("Enter the phone number of the person to delete: ")
-    df = pd.read_csv("seminar8_phonebook.csv")
+    df = pd.read_csv("seminar8_phonebook.csv", sep = ',')
     df = df[df["phone"] != phone]
     df.to_csv("seminar8_phonebook.csv", index=False)
     print("Person deleted successfully.")
@@ -101,6 +101,8 @@ def var_dump(data):
             var_dump(item)
         print("]")
 
-work_with_phonebook()
 
 
+
+df = pd.read_csv('seminar8_phonebook.csv')
+print(type(df))

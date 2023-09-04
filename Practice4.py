@@ -1197,10 +1197,10 @@ class LibraryCatalog():
         self.books.remove(book)
     def DisplayBooks(self):
         print(self.books)
-book_catalog = LibraryCatalog()
-book_catalog.AddBooks('Crime and Punishment')
-book_catalog.AddBooks('Miracle Morning')
-book_catalog.DisplayBooks()
+# book_catalog = LibraryCatalog()
+# book_catalog.AddBooks('Crime and Punishment')
+# book_catalog.AddBooks('Miracle Morning')
+# book_catalog.DisplayBooks()
 
 # Temperature Converter Class:
 # Create a TemperatureConverter class with methods to convert between Celsius and Fahrenheit 
@@ -1355,8 +1355,8 @@ class Manager(Employee):
     def __str__(self):
         return f"name: {self.name} \nsalary: {self.salary} \nrole: {self.role} \nteam size: {self.team_size} \nresponsibilities: {', '. join(self.responsibilities)}"
 
-manager1 = Manager('Jeff', 80000, 'Sales Manager', 20, ['supervising', 'organizing projects'])
-print(manager1)
+# manager1 = Manager('Jeff', 80000, 'Sales Manager', 20, ['supervising', 'organizing projects'])
+# print(manager1)
 
 # School System:
 # Design a class Person with attributes for name and age. Create a subclass Student that inherits 
@@ -1405,8 +1405,217 @@ class Electronics(Product):
         self.title = title
         self.author = author
         self.year = year
+
+# Errors and Exceptions Homework
+# Handle the exception thrown by the code below by using try and except blocks.  
+# try:
+#     for i in ['a','b','c']:
+#         print(i**2)
+# except TypeError:
+#     print('Type error!')
+# else:
+#     print('Correct input.')
+
+# Handle the exception thrown by the code below by using try and except blocks. Then use a finally block to print 'All Done.'
+
+x = 5
+y = 1
+
+# try:    
+#     z = x/y
+# except ZeroDivisionError:
+#     print("Cannot divide by zero.")
+# else:
+#     print(x/y)
+#     print("Done!")
+
+# Write a function that asks for an integer and prints the square of it. 
+# Use a while loop with a try, except, else block to account for incorrect inputs.
+def data_validation_practice():
+    while True:
+        try:
+            number = int(input('Enter a number: '))
+            print(number**2)
+            break
+        except: 
+            print("Not a number! Enter a number:")
+            continue
+
+# Phone Number Validation:
+# Write a program that validates a user's phone number input. The phone number 
+# should have exactly 10 digits and should consist of only digits.
+# while True:
+#     try:
+#         phone_number = input("Enter a phone number: ")
+#     except:
+#         print('Error! Phone number should contain integers only.')
+#         continue
+#     else:
+#         if len(phone_number) != 10:
+#             print('Invalid phone number. Phone number should be 10 digits.')
+#             continue
+#         else:
+#             break
+
+
+# Email Address Validation:
+# Create a program that validates an email address entered by the user. 
+# Ensure that the email address contains the "@" symbol and a valid domain name.
+
+def EmailAddressValidation():
+    valid_domains = ['gmail.com', 'hotmail.com', 'mail.ru', 'yahoo.com']
+    while True:
+        try:
+            email_address = input("Enter your email address: ")
+            if '@' not in email_address:
+                raise ValueError('needs @')
+            if email_address[email_address.index('@')+1:].lower() not in valid_domains:
+                raise ValueError('need valid domain')
+        except ValueError as e:
+            print('Error', e)
+            continue
+        else:
+            break
+        
+
+# Password Strength Checker:
+# Write a program that checks the strength of a user's password. 
+# The password should have a minimum length of 8 characters and should contain 
+# a mix of uppercase and lowercase letters, numbers, and special characters.
+
+class InvalidInputError(Exception):
+    def __init__(self, message):
+        self.message = message
+
+def password_check():
+    while True:
+        try:
+            password = input('Enter a password containing at least 8 characters and a mix of uppercase and lowercase letters, numbers, and special characters: ')
+            if len(password) < 8:
+                raise InvalidInputError('less than 8 characters')
+            if not any(letter.islower() for letter in password):
+                raise InvalidInputError('no lowercase letters')
+            if not any(letter.isupper() for letter in password): 
+                raise InvalidInputError('no uppercase letters')
+            if not any(letter in '!@#$%^&*(),.?\":}|{<>' for letter in password):
+                raise InvalidInputError
+        except InvalidInputError as e:
+            print('Error:', e)
+        else:
+            print('Password is all set!')
+            break
     
 
+# Numeric Input Validation:
+# Develop a program that asks the user to input a numeric value. Handle cases where 
+# the input cannot be converted to a number.
+def number_check():
+    while True:
+        try:
+            number = int(input('Enter a number: '))
+        except ValueError:
+            print('That is not an number!  Please enter a number:')
+        else:
+            break
+
+# Username Availability:
+# Create a program that prompts the user to enter a username. Check if the username is available 
+# (not already taken). Use a dictionary to keep track of usernames.
+def CheckIfUsernameExists():
+    usernames = {}
+
+    usernames['john_dow'] = {'name': 'John Doe', 'email': 'johnexample.com'}
+    usernames['sarah_jane'] = {'name': 'Sarah Jane', 'email': 'sarahexample.com'}
+
+    print(usernames)
+    while True:
+        try:
+            username = input('Enter a username: ')
+            if username in usernames.keys():
+                raise ValueError('Username is taken. Try another.')
+        except ValueError as e:
+            print('Error:', e)
+        else:
+            break
+
+# File Existence Checker:
+# Write a program that asks the user for a filename and checks if the file exists. 
+# Handle cases where the file doesn't exist.
+
+
+
+# Date Validation:
+# Develop a program that validates a date entered by the user in the format "YYYY-MM-DD". 
+# Ensure that the year, month, and day are within valid ranges.
+
+# Positive Integer Input:
+# Create a program that prompts the user for a positive integer input. Handle cases where 
+# the input is not a positive integer.
+
+# Menu Input Validation:
+# Write a program that displays a menu and asks the user to select an option. 
+# Validate the user's choice to ensure it's within the valid range of options.
+
+# Credit Card Number Validation:
+# Develop a program that validates a credit card number entered by the user. 
+# Check if the card number follows the Luhn algorithm.
+
+
+# my_list = [1,2,3,4]
+# print(id(my_list))
+# my_list.append(5)
+# print(my_list)
+# print(id(my_list))
+# print(hash(my_list))
+
+# a = 2
+# print(id(a))
+# a = 5
+# print(id(a))
+# b = 5
+# print(id(b))
+
+# word = input('Enter something: ').split(',')
+# word: int = int(input('Enter something: '))
+# print(f'type: {type(word)} \naddress: {id(word)}')
+# print(word)
+# print(dir(str))
+# a = 'Hello'
+# print(id(a))
+# a = 'Bye'
+# print(id(a))
+# b = 'Hello'
+# print(id(b))
+# help()
+def using_enumerate():
+    animals = ['dog', 'cat', 'elephant']
+    for i, animal in enumerate(animals, start = 1):
+        print(i, animal)
+
+def number_to_hex():
+    while True:
+        try:
+            num = int(input('Please enter a number: '))
+        except ValueError:
+            print('That is not a number! Please enter a number:')
+        else:
+            break
+
+    hex_dict = {0:0, 1:1, 2:2, 3:3, 4:4, 5:5, 6:6, 7:7, 8:8, 9:9, 10:'a', 11: 'b', 12: 'c',\
+                13:'d', 14: 'e', 15: 'f'}
+    remainder_list = []
+    while num > 0:
+        remainder_list.append(num % 16)
+        num = num//16
+        print(num)
+        print(remainder_list)
+
+    hex_number = ''
+    while remainder_list:
+        hex_number += str(hex_dict[remainder_list.pop()])
+    print(hex_number)
+
+number_to_hex()
 
 
 
@@ -1414,7 +1623,10 @@ class Electronics(Product):
 
 
 
-    
+
+
+
+
     
     
 

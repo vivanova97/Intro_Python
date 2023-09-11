@@ -1682,11 +1682,214 @@ def backpack_variations(things_dict, backpack_capacity):
     for variation in all_possible_variations:
         print(variation)
 
+# ✔ Создайте вручную кортеж содержащий элементы разных типов.
+# ✔ Получите из него словарь списков, где:
+# ключ — тип элемента,
+# значение — список элементов данного типа.
 
+# tuple_values = (1, 'hi', 2, 'bye', (1,2,3), [1,23,4], 5)
+# my_dict = dict()
+# for item in tuple_values:
+#     if type(item) not in my_dict:
+#         my_dict[type(item)] = []
+#     my_dict[type(item)].append(item)
+# print(my_dict)
 
+# ✔ Создайте вручную список с повторяющимися элементами.
+# ✔ Удалите из него все элементы, которые встречаются дважды.
+def delete_elements_that_appear_twice():
+    from pprint import pp
+    list_ = [1,1,2,3,4,5,5,6,7,7,7]
+    pp(list(filter(lambda list_item: list_.count(list_item) !=2, list_)))
+    for index, item in enumerate(list_):
+        if list_.count(item) == 2:
+            list_.remove(item)
+            list_.remove(item)
+    pp(list_)
 
+# Пользователь вводит строку текста. Вывести каждое слово с новой строки.
+# ✔ Строки нумеруются начиная с единицы.
+# ✔ Слова выводятся отсортированными согласно кодировки Unicode.
+# ✔ Текст выравнивается по правому краю так, чтобы у самого длинного
+# слова был один пробел между ним и номером строки.
+def practice_problem():
+    text = input('Enter text: ')
+    list_ = text.split()
+    list_.sort()
+    max_word = max(list(map(lambda list_item: len(list_item), list_)))
+    print(max_word)
+    for index, word in enumerate(list_, start= 1):
+        print(f'{index} {word:>{max_word}}')
 
+#  Пользователь вводит строку текста.
+# ✔ Подсчитайте сколько раз встречается
+# каждая буква в строке без использования
+# метода count и с ним.
+# ✔ Результат сохраните в словаре, где ключ —
+# символ, а значение — частота встречи
+# символа в строке.
+# ✔ Обратите внимание на порядок ключей.
+# Объясните почему они совпадают
+# или не совпадают в ваших решениях.
+def letter_count_dict():
+    text = 'hello how are you doing today'
+    letter_count = dict()
+    for letter in text:
+        letter_count[letter] = text.count(letter)
+    print(letter_count)
+
+# ✔ Три друга взяли вещи в поход. Сформируйте
+# словарь, где ключ — имя друга, а значение —
+# кортеж вещей. Ответьте на вопросы:
+# ✔ Какие вещи взяли все три друга
+# ✔ Какие вещи уникальны, есть только у одного друга
+# ✔ Какие вещи есть у всех друзей кроме одного
+# и имя того, у кого данная вещь отсутствует
+# ✔ Для решения используйте операции
+# с множествами. Код должен расширяться
+# на любое большее количество друзей.
+
+friends_things = {'Sergey': ('thermos', 'chair', 'umbrella'), 'Valeria': ('thermos', 'food'), 'Phill': ('table', 'thermos', 'table')}
+set_list = []
+i = 0
+while i <= len(friends_things):
+    for key, value in friends_things.items():
+        set_list.append(set(value))
+        i+=1
         
+for index, set_item in enumerate(set_list, start=1):
+    common_among_all = set_list[0].intersection(set_item)
+    only_one_friend_has = set_list[0].difference(set_item)
+
+
+# ✔Напишите функцию, которая принимает строку текста. 
+# Вывести функцией каждое слово с новой строки. 
+# ✔Строки нумеруются начиная с единицы. 
+# ✔Слова выводятся отсортированными согласно кодировки Unicode. 
+# ✔Текст выравнивается по правому краю так, чтобы у самого длинного слова был один пробел между 
+# ним и номером строки.
+
+def print_string_on_newline(string_input: str):
+    string_list = string_input.lower().split()
+    string_list.sort()
+    max_length = len(max(string_list, key=len))
+    for index, word in enumerate(string_list,start = 1):
+        print(f'{index}. {word:>{max_length}}')
+
+
+# ✔Напишите функцию, которая принимает строку текста. 
+# ✔Сформируйте список с уникальными кодами Unicode каждого символа введённой строки 
+# отсортированный по убыванию.
+
+def string_to_unicode(string_input: str):
+    unicode_list = []
+    for symbol in set(string_input):
+        unicode_list.append((ord(symbol)))
+    unicode_list.sort(reverse=True)
+    return unicode_list
+
+def string_to_unicode2(string_input: str):
+    return [ord(symbol) for symbol in sorted(set(string_input),reverse=True)]
+
+# print(string_to_unicode2('How are you?'))
+
+# ✔Функция получает на вход строку из двух чисел через пробел. 
+# ✔Сформируйте словарь, где ключом будет символ из Unicode, а значением — целое число. 
+# ✔Диапазон пар ключ-значение от наименьшего из введённых пользователем чисел до наибольшего 
+# включительно.
+# string_input2 = input('Enter two numbers, separate the numbers with a space: ')
+
+def unicode_dict(string_input: str) -> dict:
+    start, finish = tuple(string_input.split())
+    number_list = [item for item in range(int(start), int(finish)+1)]
+    unicode_number_dict = sorted({chr(value): value for value in number_list}.items(), key= lambda item: item[1])
+    print(unicode_number_dict)
+
+# unicode_dict(string_input2)
+
+# ✔Функция принимает на вход три списка одинаковой длины: ✔ имена str, ✔ ставка int, ✔ премия str 
+# с указанием процентов вида «10.25%». 
+# ✔Вернуть словарь с именем в качестве ключа и суммой премии в качестве значения. 
+# ✔Сумма рассчитывается как ставка умноженная на процент премии.
+
+name_list = ['Sergey', 'Valeria', 'Elena']
+percent_list = [.1125, .1217, .1245]
+bonus_list = [170000, 150000, 140000]
+
+def name_bonus(name_list: list[str], percent_list:[float], bonus_list:[float]) -> dict:
+    name_amount = dict()
+    for name, percent, bonus in zip(name_list,percent_list,bonus_list):
+        name_amount[name] = "{:.2f}".format(percent * bonus)
+    return name_amount
+
+# print(name_bonus(name_list, percent_list, bonus_list))
+
+# ✔Функция получает на вход список чисел и два индекса. 
+# ✔Вернуть сумму чисел между между переданными индексами. 
+# ✔Если индекс выходит за пределы списка, сумма считается до конца и/или начала списка.
+
+def sum_of_numbers(numbers_list, index1, index2):
+    if index1 < 0:
+        index1 = 0
+    if index2 > len(numbers_list)-1:
+        index2 = len(numbers_list)-1
+    return sum(numbers_list[index1:index2])-numbers_list[index1]
+
+# numbers_list = [10,20,30,40,50,60,70,80,90,100,110,120]
+# print(sum_of_numbers(numbers_list, 2,13))
+
+# ✔Функция получает на вход словарь с названием компании в качестве ключа и списком с 
+# доходами и расходами (3-10 чисел) в качестве значения. 
+# ✔Вычислите итоговую прибыль или убыток каждой компании. 
+# Если все компании прибыльные, верните истину, а если хотя бы одна убыточная — ложь.
+company_list = {'H&M': [-100,2000,-200], 'Apple': [100000, -1001000, -500], 'Mavi': [15000, -5000]}
+def check_all_companies_made_income(company_income_expenses: dict[str:list]):
+    companies_income = list(map(lambda income_list: sum(income_list), company_income_expenses.values()))
+    return all(map(lambda income: income > 0, companies_income))
+
+# print(check_all_companies_made_income(company_list))
+
+# ✔Создайте несколько переменных заканчивающихся и не оканчивающихся на «s». 
+# ✔Напишите функцию, которая при запуске заменяет содержимое переменных оканчивающихся на s 
+# (кроме переменной из одной буквы s) на None. ✔Значения не удаляются, а помещаются в 
+# одноимённые переменные без s на конце.
+
+def variables_func():
+    apples = 7
+    s = 8
+    sun = 10
+    chairs = 15
+    def change_value_of_words_ending_in_s():
+        for key in locals():
+            if key.endswith('s') and len(key) > 1:
+                locals()[key] = None
+    change_value_of_words_ending_in_s()
+    print(locals())
+
+
+# Напишите функцию для транспонирования матрицы
+matrix = [[1,2,3], [4,5,6], [7,8,9]]
+def transpose_matrix(matrix: list[list|tuple]):
+    for item in zip(*matrix):
+        print(*item)
+# transpose_matrix(matrix)
+
+# Напишите функцию принимающую на вход только ключевые параметры и возвращающую словарь, 
+# где ключ — значение переданного аргумента, а значение — имя аргумента. 
+# Если ключ не хешируем, используйте его строковое представление.
+def invert_dictionary_keys_values(**kwargs):
+    new_dict = dict()
+    for key, value in kwargs.items():
+        try:
+            hash(value)
+        except TypeError:
+            new_dict[str(value)] = key
+        else:
+            new_dict[value] = key
+    return new_dict
+
+print(invert_dictionary_keys_values(hi=2, hello=[1,2,3,4], li=(2,3,4), dict_={'dog': 4, 'cat':2}))
+
     
 
 

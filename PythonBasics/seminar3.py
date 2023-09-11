@@ -78,3 +78,39 @@ def backpack_variations(things_dict, backpack_capacity):
     for variation in all_possible_variations:
         print(variation)
 
+import itertools
+
+things_dict = {
+    'pen': 10, 'book': 500, 'notebook': 1500, 'refrigerator': 30000, 'lunch': 500,
+    'chair': 10000, 'coat': 900, 'wallet': 150, 'umbrella': 300, 'medicine': 100,
+    'random_item': 3000
+}
+
+capacity = 3000
+
+def find_max_fill_combinations(things_dict, capacity):
+    max_fill_combinations = []
+    max_total_weight = 0
+
+    for r in range(1, len(things_dict) + 1):
+        for combo in itertools.combinations(things_dict.items(), r):
+            combo_items, combo_weights = zip(*combo)
+            total_weight = sum(combo_weights)
+
+            if total_weight <= capacity:
+                if total_weight > max_total_weight:
+                    max_fill_combinations = [combo_items]
+                    max_total_weight = total_weight
+                elif total_weight == max_total_weight:
+                    max_fill_combinations.append(combo_items)
+
+    return max_fill_combinations
+
+# Find all combinations that fill the backpack as much as possible
+combinations = find_max_fill_combinations(things_dict, capacity)
+
+# Print the combinations
+for combo in combinations:
+    print(combo)
+
+backpack_variations(things_dict, capacity)

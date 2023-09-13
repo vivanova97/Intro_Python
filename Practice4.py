@@ -1888,34 +1888,97 @@ def invert_dictionary_keys_values(**kwargs):
             new_dict[value] = key
     return new_dict
 
-print(invert_dictionary_keys_values(hi=2, hello=[1,2,3,4], li=(2,3,4), dict_={'dog': 4, 'cat':2}))
+# print(invert_dictionary_keys_values(hi=2, hello=[1,2,3,4], li=(2,3,4), dict_={'dog': 4, 'cat':2}))
 
-    
+# ✔Пользователь вводит строку из четырёх или более целых чисел, разделённых символом “/”. 
+# Сформируйте словарь, где: ✔второе и третье число являются ключами. ✔первое число является 
+# значением для первого ключа. ✔четвертое и все возможные последующие числа хранятся в кортеже 
+# как значения второго ключа.
+def create_dict1():
+    num1, num2, num3, *num4 = map(int, input('Enter four numbers separated by /: ').split('/'))
+    return {num2:num1, num3:num4}
+
+def create_dict2(str_):
+    str_ = str_.split("/")
+    num1, num2, num3, *num4 = str_
+    return {num2:num1, num3:num4}
+# str_ = "1/2/3/4/5/6/7"
+
+# ✔Самостоятельно сохраните в переменной строку текста. 
+# ✔Создайте из строки словарь, где ключ — буква, а значение — код буквы. 
+# ✔Напишите преобразование в одну строку.
+text = 'Code of one-line code lovers.'
+
+dict_ = {elem:ord(elem) for elem in text}
+
+dict_iter = iter(dict_.items())
+# print(next(dict_iter))
+
+dict_generator = ({elem:ord(elem)} for elem in text)
 
 
 
+# Создайте функцию-генератор. Функция генерирует N простых чисел, начиная с числа 2.
+# Для проверки числа на простоту используйте
+# правило: «число является простым, если делится
+# нацело только на единицу и на себя».
+
+def prime_number_generator(num_of_primes: int) -> int:
+    num = 2
+    while num_of_primes > 0:
+        is_prime = True
+        for i in range(2, num):
+            if num % i == 0:
+                is_prime = False
+                break
+
+        if is_prime:
+            yield num
+            num_of_primes -= 1
+
+        num += 1
+
+# Example usage:
+# for prime in prime_number_generator(10):
+#     print(prime)
+
+def macos_return_path_filename_extension(file_path: str) -> tuple :
+    *path, file_name_extension = file_path.split('/')
+    path = '/'.join(path)
+    file_name, extension = file_name_extension.split('.')
+    return path, file_name, extension
 
 
+mult_table = ("\n" if i == 2 and j == 10 else f"{i} * {j} = {i*j} \t{i+1} * {j} = {(i+1) * j} \t{i+2} * {j} = {(i+2) * j} \t{i+3} * {j} = {(i+3) * j}" for i in range(2,7,4) for j in range (2,11))
+print(*mult_table, sep = '\n')
 
+# ✔ Напишите однострочный генератор словаря, который принимает
+# на вход три списка одинаковой длины: имена str, ставка int,
+# премия str с указанием процентов вида «10.25%». В результате
+# получаем словарь с именем в качестве ключа и суммой
+# премии в качестве значения. Сумма рассчитывается
+# как ставка умноженная на процент премии
 
+generate_even_nums_to_100 = (i for i in range(1,101) if i%2==0 and sum(divmod(i,10)) != 8)
 
+# ✔Напишите программу, которая выводит на экран числа от 1 до 100. 
+# ✔При этом вместо чисел, кратных трем, программа должна выводить слово «Fizz» 
+# ✔Вместо чисел, кратных пяти — слово «Buzz». 
+# ✔Если число кратно и 3, и 5, то программа должна выводить слово «FizzBuzz». 
+# ✔*Превратите решение в генераторное выражение.
 
+def FizzBuzz1():
+    for i in range(1,101):
+        if i % 3 == 0 and i% 5 == 0:
+            yield "FizzBuzz"
+        elif i % 3 == 0:
+            yield "Fizz"
+        elif i % 5 ==0:
+            yield "Buzz"
+        else:
+            yield i
 
-
-
-
-    
-    
-
-
-
-
-
-
-    
-    
+FizzBuzz2 = ("FizzBuzz" if i%3 == 0 and i%5 == 0 else "Fizz" if i%3 ==0 else "Buzz" if i%5 ==0 else i for i in range(1,101))
 
 
         
-
-

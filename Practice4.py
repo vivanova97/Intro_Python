@@ -1950,7 +1950,7 @@ def macos_return_path_filename_extension(file_path: str) -> tuple :
 
 
 mult_table = ("\n" if i == 2 and j == 10 else f"{i} * {j} = {i*j} \t{i+1} * {j} = {(i+1) * j} \t{i+2} * {j} = {(i+2) * j} \t{i+3} * {j} = {(i+3) * j}" for i in range(2,7,4) for j in range (2,11))
-print(*mult_table, sep = '\n')
+
 
 # ✔ Напишите однострочный генератор словаря, который принимает
 # на вход три списка одинаковой длины: имена str, ставка int,
@@ -1978,7 +1978,13 @@ def FizzBuzz1():
         else:
             yield i
 
-FizzBuzz2 = ("FizzBuzz" if i%3 == 0 and i%5 == 0 else "Fizz" if i%3 ==0 else "Buzz" if i%5 ==0 else i for i in range(1,101))
+import random
 
+# Set the seed value
+random.seed(50)
 
-        
+# Generate random numbers
+random_number1 = random.randint(1, 100)
+random_number2 = random.randint(1, 100)
+
+print(random_number1, random_number2)

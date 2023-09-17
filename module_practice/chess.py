@@ -2,7 +2,7 @@ from random import randint, sample
 
 __all__ = ['chess_board_game', 'return_four_true_games']
 
-def gen_chess_board() -> list[tuple]:
+def _gen_chess_board() -> list[tuple]:
     """"
     Generates and returns eight random placements for the eight queens.
     """
@@ -25,7 +25,7 @@ def chess_board_game() -> bool:
                    [0,0,0,0,0,0,0,0], 
                    [0,0,0,0,0,0,0,0]]
     
-    eight_random_places = gen_chess_board()
+    eight_random_places = _gen_chess_board()
 
     for horizontal, diagonal in eight_random_places:
         chess_board[horizontal][diagonal] = 1
@@ -43,16 +43,20 @@ def chess_board_game() -> bool:
                     #Checks if two queens are in one column
                     return False
                 if index_row + index_column <= 7:
-                    if list(filter(lambda x: x == 1, (chess_board[index_row+index_column-i][0+i] for i in range(index_row+index_column+1)))).count(1) > 1: #Checks if two queens are in left top diagonal half 
+                    if list(filter(lambda x: x == 1, (chess_board[index_row+index_column-i][0+i] for i in range(index_row+index_column+1)))).count(1) > 1: 
+                        #Checks if two queens are in left top diagonal half 
                         return False
                 if index_row + index_column > 7:
-                    if list(filter(lambda x: x == 1, (chess_board[7-i][index_row+index_column-7+i] for i in range(abs(index_row+index_column-7-8))))).count(1) > 1: #Checks if two queens are in right bottom diagonal half 
+                    if list(filter(lambda x: x == 1, (chess_board[7-i][index_row+index_column-7+i] for i in range(abs(index_row+index_column-7-8))))).count(1) > 1: 
+                        #Checks if two queens are in right bottom diagonal half 
                         return False
                 if index_row - index_column >= 0:
-                    if list(filter(lambda x: x == 1, (chess_board[index_row-index_column+i][0+i] for i in range(abs(index_row-8))))).count(1) > 1: #Checks if two queens are in left bottom diagonal half 
+                    if list(filter(lambda x: x == 1, (chess_board[index_row-index_column+i][0+i] for i in range(abs(index_row-8))))).count(1) > 1: 
+                        #Checks if two queens are in left bottom diagonal half 
                         return False
                 if index_row - index_column < 0:
-                    if list(filter(lambda x: x == 1, (chess_board[0+i][index_column-index_row] for i in range(abs(index_column-8))))).count(1) > 1: #Checks if two queens are in top right diagonal half 
+                    if list(filter(lambda x: x == 1, (chess_board[0+i][index_column-index_row] for i in range(abs(index_column-8))))).count(1) > 1: 
+                        #Checks if two queens are in top right diagonal half 
                         return False
     
     print(*chess_board, sep='\n')

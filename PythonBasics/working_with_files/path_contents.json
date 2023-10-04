@@ -1,0 +1,97 @@
+{
+  "new_folder": {
+    "type": "directory",
+    "parent_folder": "working_with_files",
+    "size": 18
+  },
+  "json_to_pickle5.py": {
+    "type": "file",
+    "parent_folder": "working_with_files",
+    "size": 838
+  },
+  "pickle_to_csv6.py": {
+    "type": "file",
+    "parent_folder": "working_with_files",
+    "size": 1023
+  },
+  "txt_to_json_1.py": {
+    "type": "file",
+    "parent_folder": "working_with_files",
+    "size": 576
+  },
+  "HW_8.py": {
+    "type": "file",
+    "parent_folder": "working_with_files",
+    "size": 2681
+  },
+  "path_contents.pickle": {
+    "type": "file",
+    "parent_folder": "working_with_files",
+    "size": 658
+  },
+  "csv_to_json.pickle": {
+    "type": "file",
+    "parent_folder": "working_with_files",
+    "size": 263
+  },
+  "path_contents.csv": {
+    "type": "file",
+    "parent_folder": "working_with_files",
+    "size": 37
+  },
+  "users.json": {
+    "type": "file",
+    "parent_folder": "working_with_files",
+    "size": 127
+  },
+  "save_as_csv3.py": {
+    "type": "file",
+    "parent_folder": "working_with_files",
+    "size": 840
+  },
+  "users.pickle": {
+    "type": "file",
+    "parent_folder": "working_with_files",
+    "size": 107
+  },
+  "path_contents.json": {
+    "type": "file",
+    "parent_folder": "working_with_files",
+    "size": 1822
+  },
+  "text.txt": {
+    "type": "file",
+    "parent_folder": "working_with_files",
+    "size": 42
+  },
+  "csv_to_json.json": {
+    "type": "file",
+    "parent_folder": "working_with_files",
+    "size": 397
+  },
+  "name_id_level_2.py": {
+    "type": "file",
+    "parent_folder": "working_with_files",
+    "size": 2653
+  },
+  "csv_to_json4.py": {
+    "type": "file",
+    "parent_folder": "working_with_files",
+    "size": 1285
+  },
+  "pickle_to_csv.csv": {
+    "type": "file",
+    "parent_folder": "working_with_files",
+    "size": 97
+  },
+  "json_to_csv.csv": {
+    "type": "file",
+    "parent_folder": "working_with_files",
+    "size": 97
+  },
+  "new_txt.txt": {
+    "type": "file",
+    "parent_folder": "working_with_files",
+    "size": 0
+  }
+}

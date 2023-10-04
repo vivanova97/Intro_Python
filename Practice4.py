@@ -1980,11 +1980,90 @@ def FizzBuzz1():
 
 import random
 
-# Set the seed value
-random.seed(50)
+# # Set the seed value
+# random.seed(50)
 
-# Generate random numbers
-random_number1 = random.randint(1, 100)
-random_number2 = random.randint(1, 100)
+# # Generate random numbers
+# random_number1 = random.randint(1, 100)
+# random_number2 = random.randint(1, 100)
 
-print(random_number1, random_number2)
+# print(random_number1, random_number2)
+
+# counter = 42
+# count = 5
+# formatted_string = f'{counter:0>{count}}'
+# print(formatted_string)
+
+# Function to count words in a text file
+def count_words_in_file(input_filename):
+    try:
+        # Open the input file for reading
+        with open(input_filename, 'r') as file:
+            text = file.read()
+        
+        # Split the text into words using whitespace as a delimiter
+        words = text.split()
+        
+        # Count the number of words
+        word_count = len(words)
+        
+        return word_count
+    except FileNotFoundError:
+        print(f"File '{input_filename}' not found.")
+        return None
+
+# Function to create a new text file with the word count
+def create_word_count_file(output_filename, word_count):
+    try:
+        # Open the output file for writing
+        with open(output_filename, 'w') as file:
+            file.write(f"Word Count: {word_count}")
+        print(f"Word count saved to '{output_filename}'.")
+    except Exception as e:
+        print(f"Error writing to file: {e}")
+
+# if __name__ == "__main__":
+#     # Input and output filenames
+#     input_filename = "input.txt"
+#     output_filename = "word_count.txt"
+
+#     # Count words in the input file
+#     word_count = count_words_in_file(input_filename)
+
+#     if word_count is not None:
+#         # Create a new text file with the word count
+#         create_word_count_file(output_filename, word_count)
+
+# Line Reversal:
+# Read a text file and create a new text file with the lines reversed, 
+# so the last line becomes the first, and so on.
+
+def read_reverse_lines(input_filename):
+    try:
+        with open(input_filename, 'r', encoding='utf-8') as f:
+            list_ = list(f)
+            reversed_list = list_[::-1]
+            print(reversed_list)
+            return reversed_list
+    except FileNotFoundError:
+        print('File not found')
+        return None
+
+def write_reverse_lines(output_filename, reversed_list):
+    try:
+        with open(output_filename, 'w+', encoding='utf-8') as f:
+            for line in reversed_list:
+                f.writelines(line)
+    except Exception as e:
+        print(f'Error writing to file {e}')
+
+if __name__ == "__main__":
+    # Input and output filenames
+    input_filename = "line_reverse.txt"
+    output_filename = "line_reverse.txt"
+
+    # Count words in the input file
+    reversed_list = read_reverse_lines(input_filename)
+    write_reverse_lines(output_filename, reversed_list)
+
+
